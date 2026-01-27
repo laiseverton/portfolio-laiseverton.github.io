@@ -1,0 +1,586 @@
+#hero {
+    padding: 80px 0; /* Espaço em cima e embaixo */
+    /* Degradê bem suave no fundo, igual ao React */
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.03) 0%, rgba(255,255,255,1) 100%);
+    overflow: hidden;
+}
+
+.hero-container {
+    display: flex; /* Coloca texto e imagem lado a lado */
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Lado Esquerdo: Texto --- */
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.tag {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+#hero h1 {
+    font-size: 3.5rem; /* Texto bem grande */
+    font-weight: 00;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-body);
+    margin-bottom: 40px;
+    max-width: 480px;
+}
+
+/* Botões */
+.buttons-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+/* Ícones Sociais */
+.social-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.social-icons a {
+    color: #7C3AED;
+    opacity: 0.7;
+    transition: 0.3s;
+    display: flex; /* Garante que o ícone fique centralizado */
+}
+
+.social-icons a:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+/* --- Lado Direito: Imagem --- */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    /* Efeito de profundidade 3D */
+    transform: perspective(1000px) rotateY(-5deg);
+    filter: drop-shadow(20px 20px 40px rgba(138, 43, 226, 0.15));
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Animação suave flutuando */
+@keyframes float {
+    0% { transform: translateY(0px) perspective(1000px) rotateY(-5deg); }
+    50% { transform: translateY(-20px) perspective(1000px) rotateY(-5deg); }
+    100% { transform: translateY(0px) perspective(1000px) rotateY(-5deg); }
+}
+
+/* --- Responsividade (Para Celular) --- */
+@media (max-width: 900px) {
+    .hero-container {
+        flex-direction: column; 
+        text-align: center;
+        gap: 40px;
+        padding-top: 40px; 
+    }
+    }
+
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .buttons-wrapper {
+        justify-content: center;
+    }
+
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    
+/* =========================================
+   5. GRID DE PROJETOS & CARDS
+   ========================================= */
+
+   .section-header {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    color: var(--text-body);
+    font-size: 1.1rem;
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+/* --- A ESTANTE (GRID) --- */
+.projects-grid, 
+.graphic-grid {
+    display: grid; /* Ativa o modo grade */
+    
+    /* A MÁGICA DA RESPONSIVIDADE:
+       - repeat(auto-fit, ...): "Crie quantas colunas couberem"
+       - minmax(350px, 1fr): "Cada coluna tem que ter no mínimo 350px. 
+         Se sobrar espaço, divida igual (1fr)" 
+    */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    
+    gap: 40px; /* Espaço entre os cards (vertical e horizontal) */
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+/* Ajuste específico para cards gráficos (que podem ser menores) */
+.graphic-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+
+/* --- OS CARDS (AS CAIXAS) --- */
+.project-card, 
+.graphic-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden; /* Garante que a imagem não vaze pelos cantos arredondados */
+    border: 1px solid var(--border); /* Bordinha sutil */
+    
+    /* A PERFORMANCE (O Segredo do "Snappy") */
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+    will-change: transform; /* Avisa o navegador: "Vou me mexer, prepara a placa de vídeo!" */
+    display: flex;       /* Garante que o card se comporte bem como bloco */
+    flex-direction: column; 
+    text-decoration: none; /* Garante que não apareça sublinhado no texto todo */
+    color: inherit;      /* Garante que o texto não fique azul de link padrão */
+}
+
+
+/* O Efeito Hover (Quando passa o mouse) */
+.project-card:hover, 
+.graphic-card:hover {
+    transform: translateY(-8px); /* Sobe 8 pixels */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Sombra mais forte */
+    border-color: transparent; /* Remove a borda pra ficar mais limpo */
+}
+
+
+/* --- AS IMAGENS DENTRO DOS CARDS --- */
+.card-image {
+    width: 100%;
+    height: 240px; /* Altura fixa pra todos ficarem alinhados */
+    overflow: hidden;
+}
+
+.graphic-card .card-image {
+    height: 200px; /* Cards gráficos podem ser um pouco mais baixos */
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Corta a imagem pra caber sem distorcer */
+    transition: transform 0.5s ease; /* Zoom suave */
+}
+
+/* Zoom na imagem quando passa o mouse no card */
+.project-card:hover img, 
+.graphic-card:hover img {
+    transform: scale(1.05); /* Aumenta 5% */
+}
+
+
+/* --- O TEXTO DENTRO DOS CARDS --- */
+.card-content {
+    padding: 24px;
+}
+
+/* Botão invisível do card gráfico (pra tornar o card todo clicável) */
+.card-action {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+.card-action h3 { margin-top: 15px; padding: 0 20px; }
+.card-action p { padding: 0 20px 20px; color: var(--text-body); font-size: 0.9rem; }
+
+
+/* --- AS TAGS (Etiquetas coloridas) --- */
+.tags-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap; /* Se não couber, quebra pra linha de baixo */
+    margin-bottom: 20px;
+}
+
+.tag {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.center-btn {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Ajuste para telas pequenas */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr; /* Uma coluna só no celular */
+    }
+    .card-image {
+        height: 250px;
+    }
+}
+
+/* =========================================
+   6. SEÇÃO SOBRE MIM (ORGÂNICO)
+   ========================================= */
+
+#sobre {
+    padding: 100px 0;
+    background-color: var(--white);
+    overflow: hidden;
+}
+
+.about-container {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    gap: 80px; /* Espaço entre a foto e o texto */
+}
+
+/* --- Lado Esquerdo: A Foto Orgânica --- */
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.organic-shape {
+    width: 450px;
+    height: 450px;
+    background-color: #f3f3f3;
+    
+    /* O SEGREDO DO FORMATO BLOB (BOLHA) */
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    
+    overflow: hidden; /* Corta a foto no formato da borda */
+    box-shadow: 20px 20px 0px rgba(124, 58, 237, 0.1); /* Sombra sólida deslocada */
+    transition: all 0.5s ease;
+}
+
+/* Animaçãozinha quando passa o mouse na foto */
+.about-image:hover .organic-shape {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; /* Muda o formato levemente */
+    box-shadow: 10px 10px 0px rgba(124, 58, 237, 0.2);
+}
+
+.organic-shape img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a foto preencha tudo */
+}
+
+/* --- Lado Direito: Conteúdo --- */
+.about-content {
+    flex: 1;
+}
+
+/* Etiqueta "Sobre Mim" */
+.pill-tag {
+    display: inline-block;
+    background-color: rgba(112, 87, 156, 0.1);
+    color: var(--primary-color);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+}
+
+.about-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    color: var(--text-body);
+    font-size: 1.05rem;
+}
+
+/* Negrito roxo no texto */
+.highlight-text {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Tags de Skills (Visual, Web, etc) */
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.skill-pill {
+    padding: 10px 24px;
+    border: 1px solid var(--primary-color); /* Borda Rixa */
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: transparent;
+    transition: 0.3s;
+}
+
+.skill-pill:hover {
+    background-color: var(--primary-hover);
+    color: var(--white);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .about-container {
+        flex-direction: column; /* Um embaixo do outro no celular */
+        text-align: center;
+        gap: 50px;
+    }
+
+    .about-content h2 {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .organic-shape {
+        width: 300px; /* Diminui a foto no celular */
+        height: 300px;
+    }
+    
+    .skills-tags {
+        justify-content: center;
+    }
+}
+
+/* =========================================
+   7. SEÇÃO DE PROCESSO (COMO TRABALHO)
+   ========================================= */
+#processo {
+    padding: 100px 0;
+    /* Um cinza bem clarinho pra separar visualmente do fundo branco */
+    background-color: #FAFAFA; 
+}
+
+/* O Grid dos 3 Passos */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.process-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    position: relative; /* Pra gente poder posicionar o número de fundo */
+    transition: 0.3s;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.process-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(124, 58, 237, 0.08);
+    border-color: rgba(124, 58, 237, 0.2);
+}
+
+.process-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+/* O ícone roxo */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 8px 16px rgba(124, 58, 237, 0.2);
+}
+
+/* O número gigante transparente (Ex: 01) */
+.process-number {
+    font-size: 4rem;
+    font-weight: 800;
+    color: rgba(0,0,0,0.03); /* Quase invisível */
+    line-height: 1;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    user-select: none; /* Não deixa selecionar o texto */
+}
+
+.process-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+}
+
+.process-card p {
+    color: var(--text-body);
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+/* Tags pequenas dentro do card (Desk Research, etc) */
+.process-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-pill {
+    background-color: #F3F4F6;
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   8. SEÇÃO DE FERRAMENTAS
+   ========================================= */
+#ferramentas {
+    padding: 100px 0;
+    background-color: var(--white);
+}
+
+.tools-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 80px; /* Espaço entre Design e Dev */
+}
+
+.tools-category h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    color: var(--text-dark);
+}
+
+/* Subtítulo específico da parte de dev */
+.dev-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.category-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-body);
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Lista de ícones */
+.tools-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px; /* Espaço entre os ícones */
+}
+
+.tool-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    position: relative; /* Para posicionar o badge "Estudando" */
+}
+
+.tool-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #FAFAFA;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: var(--primary-color); /* Cor cinza inicial */
+}
+
+/* Quando passa o mouse no ícone */
+.tool-item:hover .tool-icon {
+    background-color: rgba(124, 58, 237, 0.1); /* Fundo roxinho */
+    transform: translateY(-5px);
+
+}
+.tool-item span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-body);
+}
+
+/* Badge "Estudando" (Amarelo) */
+.badge-study {
+    position: absolute;
+    top: -10px;
+    background-color: #FFC107; /* Amarelo ouro */
+    color: #111;
+    font-size: 0.65rem;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 2;
+}
