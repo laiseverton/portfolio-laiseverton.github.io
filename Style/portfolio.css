@@ -1,0 +1,395 @@
+/* 10. ESTILOS DA PÁGINA PORTFÓLIO E MODAL*/
+
+.projects-grid, 
+.graphic-grid {
+    display: grid; /* Ativa o modo grade */
+    
+    /* A MÁGICA DA RESPONSIVIDADE:
+       - repeat(auto-fit, ...): "Crie quantas colunas couberem"
+       - minmax(350px, 1fr): "Cada coluna tem que ter no mínimo 350px. 
+         Se sobrar espaço, divida igual (1fr)" 
+    */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    
+    gap: 40px; /* Espaço entre os cards (vertical e horizontal) */
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+/* Ajuste específico para cards gráficos (que podem ser menores) */
+.graphic-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+
+/* --- OS CARDS (AS CAIXAS) --- */
+.project-card, 
+.graphic-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden; /* Garante que a imagem não vaze pelos cantos arredondados */
+    border: 1px solid var(--border); /* Bordinha sutil */
+    
+    /* A PERFORMANCE (O Segredo do "Snappy") */
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+    will-change: transform; /* Avisa o navegador: "Vou me mexer, prepara a placa de vídeo!" */
+    display: flex;       /* Garante que o card se comporte bem como bloco */
+    flex-direction: column; 
+    text-decoration: none; /* Garante que não apareça sublinhado no texto todo */
+    color: inherit;      /* Garante que o texto não fique azul de link padrão */
+}
+
+
+/* O Efeito Hover (Quando passa o mouse) */
+.project-card:hover, 
+.graphic-card:hover {
+    transform: translateY(-8px); /* Sobe 8 pixels */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Sombra mais forte */
+    border-color: transparent; /* Remove a borda pra ficar mais limpo */
+}
+
+
+/* --- AS IMAGENS DENTRO DOS CARDS --- */
+.card-image {
+    width: 100%;
+    height: 240px; /* Altura fixa pra todos ficarem alinhados */
+    overflow: hidden;
+}
+
+.graphic-card .card-image {
+    height: 200px; /* Cards gráficos podem ser um pouco mais baixos */
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Corta a imagem pra caber sem distorcer */
+    transition: transform 0.5s ease; /* Zoom suave */
+}
+
+/* Zoom na imagem quando passa o mouse no card */
+.project-card:hover img, 
+.graphic-card:hover img {
+    transform: scale(1.05); /* Aumenta 5% */
+}
+
+
+/* --- O TEXTO DENTRO DOS CARDS --- */
+.card-content {
+    padding: 24px;
+}
+
+/* Botão invisível do card gráfico (pra tornar o card todo clicável) */
+.card-action {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+.card-action h3 { margin-top: 15px; padding: 0 20px; }
+.card-action p { padding: 0 20px 20px; color: var(--text-body); font-size: 0.9rem; }
+
+
+/* --- AS TAGS (Etiquetas coloridas) --- */
+.tags-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap; /* Se não couber, quebra pra linha de baixo */
+    margin-bottom: 20px;
+}
+
+.tag {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.center-btn {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Ajuste para telas pequenas */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr; /* Uma coluna só no celular */
+    }
+    .card-image {
+        height: 250px;
+    }
+}
+
+.portfolio-page-header {
+    padding: 60px 0 40px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.portfolio-page-header h1 {
+    font-size: 2.5rem; /* Tamanho controlado */
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.portfolio-page-header .subtitle {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #666;
+    line-height: 1.6;
+}
+
+.graphic-card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Garante que todos os cards na mesma linha tenham a mesma altura */
+}
+
+.graphic-card:hover {
+    transform: translateY(-3px);
+}
+
+.graphic-card h4 {
+    font-size: 1.1rem;
+    color: #1F2937;
+    font-weight: 700;
+    margin-bottom: 8px;
+    
+    /* ESTES SÃO OS PONTOS CHAVE: */
+    line-height: 1.3;      /* Define uma altura de linha padrão */
+    min-height: 2.6rem;    /* Reserva espaço para exatamente 2 linhas (1.3 * 2) */
+    display: flex;         /* Ajuda no alinhamento vertical */
+    align-items: flex-start; 
+}
+
+.graphic-card p {
+    font-size: 0.9rem;
+    color: #6B7280;
+    line-height: 1.5;
+    /* Opcional: se quiser que as descrições também terminem no mesmo nível */
+    min-height: 3rem; 
+}
+
+/* --- 4. O MODAL (JANELA SOBREPOSTA) --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: #fff;
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #f3f4f6;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #4b5563;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: #e5e7eb;
+    color: #000;
+}
+
+/* Estilos internos do modal */
+.modal-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    /* CORREÇÃO DO AVISO AMARELO AQUI: */
+    background: linear-gradient(to right, #7C3AED, #A855F7);
+    -webkit-background-clip: text;
+    background-clip: text; /* Padrão Standard */
+    -webkit-text-fill-color: transparent;
+}
+
+.modal-desc-short {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.modal-main-img {
+    width: 100%;
+    height: auto; /* Altura automática no modal para ver a imagem toda */
+    max-height: 400px; /* Limite para não ficar eterno */
+    object-fit: contain; /* Mostra a imagem inteira sem cortar */
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 1px solid #f3f4f6;
+    background-color: #f9fafb;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    background: #F9FAFB;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    border: 1px solid #E5E7EB;
+}
+
+.info-item h5 {
+    color: #7C3AED;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.info-item p {
+    color: #1F2937;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.modal-section-title {
+    font-size: 1.2rem;
+    color: #111;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+.modal-text {
+    color: #4B5563;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* --- 5. RESPONSIVIDADE (CELULAR) --- */
+@media (max-width: 768px) {
+    .ux-grid, .graphic-grid {
+        grid-template-columns: 1fr; /* 1 Coluna no celular */
+    }
+    
+    .ux-image {
+        height: 220px; /* Capa menor no celular */
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr; /* Informações empilhadas */
+        gap: 15px;
+    }
+    
+    .portfolio-page-header h1 {
+        font-size: 2rem;
+    }
+}
+
+
+/* O CONTAINER (A "Grade" invisível) */
+.graphic-grid {
+    display: grid; /* Liga o modo Grid */
+    
+    /* TRADUÇÃO: "Crie colunas que tenham no mínimo 300px e no máximo 1 fração do espaço" */
+    /* Isso faz o layout ser responsivo automático: cabem 3? põe 3. Só cabem 2? põe 2. */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    
+    gap: 32px; /* Espaço entre os cards (vertical e horizontal) */
+    
+    width: 100%;
+    margin-top: 80px;
+}
+
+/* O CARD (A aparência de cada item) */
+.graphic-card img {
+    width: 100%; /* Garante que a imagem não estoure o card */
+    height: auto;
+    border-radius: 12px; /* Aquele arredondado nas pontas da imagem */
+    object-fit: cover; /* Garante que a imagem não fique esticada */
+    margin-bottom: 16px; /* Espaço entre a imagem e o título */
+}
+
+.graphic-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #1a1a1a; /* Ajuste para a cor do seu texto */
+}
+
+.graphic-card p {
+    font-size: 14px;
+    color: #666; /* Cinza para a descrição */
+    line-height: 1.5;
+}
+
+/* Isso remove a "cara de botão" padrão do Windows */
+.card-action {
+    background: transparent; /* Remove o fundo cinza */
+    border: none;            /* Remove a borda saltada */
+    padding: 0;              /* Remove o espaçamento interno padrão */
+    width: 100%;             /* Garante que o clique pegue o card todo */
+    cursor: pointer;         /* Mãozinha ao passar o mouse */
+    text-align: left;        /* Alinha o texto à esquerda (botão padrão centraliza) */
+}
+
+/* Isso garante que a imagem preencha o espaço sem deformar */
+.graphic-card img {
+    width: 100%;
+    height: 200px;        /* Defina uma altura fixa para todas ficarem iguais! */
+    object-fit: cover;    /* A mágica: corta a imagem para caber, sem esticar */
+    border-radius: 8px;   /* Arredonda as pontas */
+}
+
+/* --- 1. Garantir que o Texto fique POR CIMA (Camada Superior) --- */
+.category-title, 
+.category-desc {
+    position: relative; /* Ativa o controle de camadas */
+    z-index: 10;        /* Coloca numa camada bem alta */
+}
+
+/* --- 2. Empurrar o Grid para baixo (Zona de Segurança) --- */
+.projects-grid {
+    /* Define que o grid fica numa camada mais baixa que o texto */
+    position: relative;
+    z-index: 1;
+    
+    /* AQUI ESTÁ A MÁGICA: */
+    /* Aumenta a distância entre o texto e os cards */
+    /* Assim, quando o card crescer (scale), ele tem espaço livre sem bater no texto */
+    margin-top: 60px; 
+}
