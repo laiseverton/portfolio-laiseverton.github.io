@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Completo - Laís Everton</title>
+    <link rel="stylesheet" href="Style/global.css">
+    <link rel="stylesheet" href="Style/portfolio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    
+    <header>
+        <div class="logo">
+            <a href="index.html"><h1>Laís Everton</h1></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html" class="active">Portfólio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section class="portfolio-page-header">
+            <div class="container">
+                <h1>Meu <span class="highlight">Portfólio</span></h1>
+                <p class="subtitle"> 
+                    Uma seleção dos meus principais trabalhos em UX/UI Design e Design Gráfico, demonstrando minha abordagem criativa e centrada no usuário.
+                </p>
+            </div>
+        </section>
+
+        <section class="portfolio-section">
+            <div class="container">
+
+                <div class="category-block">
+                    <h3 class="category-title">Projetos <span class="highlight-purple">UX/UI</span></h3>
+                    <p class="category-desc">Estudos de caso detalhados mostrando meu processo de design do início ao fim</p>
+
+                    <div class="projects-grid">
+                    
+                    <a href="umob.html" class="project-card">
+                        <div class="card-image">
+                            <img src="assets/images/images_umob/Capa_umob.jpg" alt="Capa do projeto Umob" loading="lazy">
+                        </div>
+                        
+                        <div class="card-content">
+                            <h3>Umob - App de Mobilidade Universitária</h3>
+                            
+                            <div class="tags-container">
+                                <span class="tag">UI/UX Design</span>
+                                <span class="tag">Mobile App</span>
+                                <span class="tag">Pesquisa de Usuário</span>
+                            </div>
+                           <span class="btn-link">Ver Estudo <span class="arrow">→</span></span>
+                        </div>
+                    </a>
+
+                    <a href="plantas.html" class="project-card">
+                        <div class="card-image">
+                            <img src="assets/images/images_plantas/capa_plantasBr.webp" alt="Capa do projeto Plantas" loading="lazy">
+                        </div>
+                        
+                        <div class="card-content">
+                            <h3>App Plantas Medicinais BR</h3>
+
+                            <div class="tags-container">
+                                <span class="tag">UI/UX Design</span>
+                                <span class="tag">Redesign</span>
+                                <span class="tag">Mobile App</span>
+                            </div>
+                            <span class="btn-link">Ver Estudo <span class="arrow">→</span></span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="category-block">
+                    <h3 class="category-title">Design <span class="highlight-purple">Visual</span></h3>
+                    <p class="category-desc">Projetos de branding, design editorial e ilustração realizados ao longo da minha formação</p>
+
+                    <div class="graphic-grid">
+                        
+                    <article class="graphic-card">
+                            <button class="card-action" onclick="openModal(1)">
+                                <img src="assets/images/Trilhas_capa.webp" alt="Capa Trilhas" loading="lazy">
+                                <h3>Identidade Visual: Trilhas de Aprendizagem</h3>
+                                <p>Criação de logo para o projeto de treinamento interno do Hospital São Domingos</p>
+                            </button>
+                    </article>
+
+                    <article class="graphic-card">
+                            <button class="card-action" onclick="openModal(2)">
+                                <img src="assets/images/Diagramacao.webp" alt="Capa Briefing" loading="lazy">
+                                <h3>Design Editorial: Briefing de segurança</h3>
+                                <p>Mapa e Briefing de Segurança para Visitantes de Canteiro de Obras</p>
+                            </button>
+                    </article>
+
+                        <article class="graphic-card">
+                             <button class="card-action" onclick="openModal(3)">
+                                <img src="assets/images/social_media.webp" alt="Social Media" loading="lazy">
+                                <h3>Conteúdo para Redes Sociais – MS Melo</h3>
+                                <p>Criação de peças gráficas institucionais para o instagram da consultoria</p>
+                            </button>
+                    </article>    
+
+                    <article class="graphic-card">
+                            <button class="card-action" onclick="openModal(4)">
+                                <img src="assets/images/msmelo.webp" alt="Identidade MS Melo" loading="lazy">
+                                <h3>Identidade Visual: MS Melo Consultoria</h3>
+                                <p>Desenvolvimento de identidade visual completa para cliente</p>
+                            </button>
+                    
+                    </article> 
+
+                    <article class="graphic-card">
+                            <button class="card-action" onclick="openModal(5)">
+                                <img src="assets/images/encarte.webp" alt="Encarte de apresentacao MS Melo" loading="lazy">
+                                <h3>Diagramação: Guia de Apresentação - MS Melo Consultoria</h3>
+                                <p>Elaboração de livreto de apresentação da empresa</p>
+                            </button>
+                    
+                    </article> 
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <h2>Vamos conversar?</h2>
+            <div class="social-links-footer">
+                <a href="mailto:laisneverton@gmail.com" class="social-btn" aria-label="Enviar E-mail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </a>
+
+                <a href="https://br.linkedin.com/in/laiseverton" target="_blank" class="social-btn" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+
+                <a href="https://wa.me/5598984633129" target="_blank" class="social-btn" aria-label="WhatsApp">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                </a>
+            </div>
+            <p class="copyright">© Laís Everton 2025.</p>
+        </div>
+    </footer>
+
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+<script>
+
+    const projectsData = {
+        1: {
+            title: "Identidade Visual: Trilhas de Aprendizagem",
+            desc: "Criação de logo para o projeto de treinamento interno do Hospital São Domingos",
+            image: "assets/images/Trilhas_capa.webp", 
+            role: "Designer Gráfico",
+            tools: "Illustrator, Photoshop, Indesign",
+            duration: "2 semanas",
+            fullText: `Desenvolvimento da a identidade visual e os materiais de apoio para o programa de treinamento do hospital, atendendo desde a equipe assistencial (médicos e enfermeiros) até o administrativo. O foco do projeto foi utilizar o design para traduzir protocolos técnicos em materiais didáticos claros, facilitando a absorção do conteúdo e engajando os colaboradores na cultura de aprendizado contínuo.`,
+
+            deliverables: ["Logotipo principal", "Variações de cor", "Manual de identidade", "Aplicações"]
+        },
+        2: {
+            title: "Design Editorial: Briefing de segurança",
+            desc: "Mapa e Briefing de Segurança para Visitantes de Canteiro de Obras",
+            image: "assets/images/Diagramacao.webp",
+            role: "Designer Editorial",
+            tools: "InDesign, Illustrator, SketchUp, V-Ray",
+            duration: "1 semana",
+            fullText: `<strong>O Desafio:</strong> Transformar normas rígidas de segurança e a complexidade espacial de um canteiro de obras em um material visual intuitivo para visitantes leigos.<br><br>
+            <strong>Solução Multidisciplinar:</strong> Como eu possuía conhecimento técnico local, fui responsável por:
+            <br>• Modelagem 3D (SketchUp + V-Ray) para mapas realistas.
+            <br>• Design de Informação para leitura dinâmica.`,
+          
+            deliverables: ["Levantamento de informações", "Planejamento do conteúdo", "Modelagem 3D", "Ilustrações", "Diagramação final"]
+        },
+        3: {
+            title: "Conteúdo para Redes Sociais – MS Melo",
+            desc: "Criação de peças gráficas institucionais para o instagram da consultoria",
+            image: "assets/images/social_media.webp",
+            role: "Designer",
+            tools: "Illustrator, Photoshop",
+            duration: "2 semanas",
+            fullText: `<strong>Social Media e Estratégia:</strong> Desenvolvimento de peças com foco em saúde mental e riscos psicossociais.<br><br>
+            O desafio foi traduzir temas técnicos e sensíveis em uma comunicação visual clara, acessível e atrativa, mantendo a seriedade corporativa necessária.`,
+    
+            deliverables: ["Briefing", "Planejamento visual", "Criação das peças", "Aplicação da identidade"]
+        },
+        4: {
+            title: "Identidade Visual: MS Melo Consultoria",
+            desc: "Desenvolvimento de identidade visual completa para cliente",
+            image: "assets/images/msmelo.webp", 
+            role: "Designer Gráfico",
+            tools: "Illustrator, Photoshop, Figma",
+            duration: "1 semana",
+            fullText: `<strong>O Conceito:</strong> Traduzir 20 anos de expertise em uma marca que unisse a rigidez técnica da Segurança do Trabalho com a humanização da Psicologia.<br><br>
+            <strong>Símbolo:</strong> Integra o "Cérebro Entrelaçado" (mente humana) com "Setas Ascendentes" (crescimento mútuo empresa e colaborador).`,
+        
+            deliverables: ["Briefing e Imersão", "Estratégia de Conteúdo", "Direção de Arte", "Refino final"]
+        },
+        5: {
+            title: "Diagramação: Guia de Apresentação - MS Melo Consultoria",
+            desc: "Elaboração de livreto de apresentação da empresa",
+            image: "assets/images/encarte.webp", 
+            role: "Designer Gráfico",
+            tools: "Illustrator, Photoshop",
+            duration: "1 semana",
+            fullText: `Criação de um livreto de apresentação para a MS Melo, com foco em comunicar de forma clara e estratégica seus serviços em Saúde Mental, Segurança do Trabalho e Riscos Psicossociais. O projeto une conteúdo técnico e design editorial para transmitir credibilidade, acolhimento e profissionalismo.`,
+        
+            deliverables: ["Briefing e Imersão", "Organização e hierarquia do conteúdo", "Direção visual e design editorial", "Diagramação e finalização do material"]
+        }
+    };
+
+    function openModal(id) {
+        const data = projectsData[id];
+        const modal = document.getElementById('project-modal');
+        const modalBody = document.getElementById('modal-body');
+
+
+        if (!data) return; 
+
+        modalBody.innerHTML = `
+            <h2 class="modal-title">${data.title}</h2>
+            <p class="modal-desc-short">${data.desc}</p>
+            <img src="${data.image}" alt="${data.title}" class="modal-main-img">
+            <div class="info-grid">
+                <div class="info-item"><h5>Função</h5><p>${data.role}</p></div>
+                <div class="info-item"><h5>Ferramentas</h5><p>${data.tools}</p></div>
+                <div class="info-item"><h5>Duração</h5><p>${data.duration}</p></div>
+            </div>
+            <h4 class="modal-section-title">Sobre o Projeto</h4>
+            <div class="modal-text">${data.fullText}</div>
+            <h4 class="modal-section-title">Entregáveis</h4>
+            <ul class="modal-list custom-list">
+                ${data.deliverables.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+        `;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('project-modal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('project-modal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
+</body>
+</html>
